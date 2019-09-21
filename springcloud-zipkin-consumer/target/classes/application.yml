@@ -1,0 +1,22 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: user-consumer #不要使用下划线
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+    sender:
+      type: kafka
+    kafka:
+      topic: zipkin
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+  sleuth:
+    sampler:
+      percentage: 1.0
+eureka:
+  client:
+    registerWithEureka: true #不注册到Eureka,不在注册中心显示
+    service-url:
+      defaultZone: http://localhost:18761/eureka
+      #defaultZone: http://192.168.0.124:7002/eureka

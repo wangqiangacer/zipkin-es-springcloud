@@ -1,0 +1,21 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: user-provider #不要使用下划线
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+    sender:
+      type: kafka
+    kafka:
+      topic: zipkin
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+  sleuth:
+    sampler:
+      percentage: 1.0
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:18761/eureka #告诉服务提供者要把服务注册到哪儿
+     #defaultZone: http://127.0.0.1:7001/eureka/,http://127.0.0.1:7002/eureka/ #告诉服务提供者要把服务注册到哪儿

@@ -1,0 +1,28 @@
+server:
+  port: 9411
+#\u914D\u7F6Ekafka
+spring:
+  sleuth:
+    enable: false
+  application:
+    name: zipkin-server
+zipkin:
+  enabled: true
+  storage:
+    type: elasticsearch
+    StorageComponent: elasticsearch
+    elasticsearch:
+      hosts: 127.0.0.1:9200
+      cluster: elasticsearch
+      index: zipkin
+      index-shards: 5
+      index-replicas: 1
+  collector:
+    kafka:
+      bootstrap-servers: 127.0.0.1:9092
+      zookeeper: 127.0.0.1:2181
+      topic: zipkin
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:18761/eureka #告诉服务提供者要把服务注册到哪儿
